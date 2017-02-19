@@ -1,0 +1,22 @@
+{
+  "name": "project-2017",
+  "description": "my first gulp project",
+  "main": "index.js",
+  "authors": [
+    "Yaroslav"
+  ],
+  "directory": "src/libs/",
+  "license": "ISC",
+  "homepage": "https://github.com/man1207/project-2017",
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/libs/",
+    "test",
+    "tests"
+  ]
+}

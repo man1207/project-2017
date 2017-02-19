@@ -1,0 +1,31 @@
+{
+  "name": "project-2017",
+  "version": "1.0.0",
+  "description": "my first gulp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yaroslav",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.7",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglifyjs": "^0.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/man1207/project-2017.git"
+  },
+  "bugs": {
+    "url": "https://github.com/man1207/project-2017/issues"
+  },
+  "homepage": "https://github.com/man1207/project-2017#readme",
+  "keywords": []
+}
