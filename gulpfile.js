@@ -8,8 +8,8 @@ var gulp = require('gulp'),
 
 gulp.task('less', function() { //работа препроцессора
 	return gulp.src([
-		'src/less/*.less',
 		'src/less/global/*.less',
+		'src/less/*.less',
 		'src/blocks/**/*.less'
 		])
 		.pipe(rename({dirname: ''}))
