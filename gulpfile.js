@@ -1,11 +1,13 @@
 /* Пока без продакшна */
 
-var gulp = require('gulp'),
-	less = require('gulp-less'),
-	browserSync = require('browser-sync'),
-	concat = require('gulp-concat'),
-	rename = require('gulp-rename'),
-	shell = require('gulp-shell');
+var gulp = require('gulp')
+	,less = require('gulp-less')
+	,browserSync = require('browser-sync')
+	,concat = require('gulp-concat')
+	,rename = require('gulp-rename')
+	//,exec = require('gulp-exec')
+	,fs = require('fs')
+	;
 
 gulp.task('less', function() { //работа препроцессора
 	return gulp.src([
@@ -57,8 +59,6 @@ gulp.task('watch', ['browser-sync', 'img', 'less'], function() { //наблюд�
 gulp.task('bem',  function() {
 	//console.log(process.argv);
 	
-	var dir = "src/blocks";
-	
 	if (process.argv.length > 4) {
 		//console.log(process.argv[2]);
 		//1. Создаем блок
@@ -70,9 +70,23 @@ gulp.task('bem',  function() {
 				console.log(' Syntax error : Can\'t create bem-block.');
 				return;
 			}
-			console.log(block_name);
 			
+			console.log(block_name);	
 			
+			var bemDir = 'src/blocks/'+block_name;
+			
+			if (fs.existsSync(bemDir)) {
+				return;
+			} 
+			
+			return 	gulp.src('src/less/bem.less')
+					.pipe(rename({
+						dirname: '',
+						basename: block_name,
+						extname: '.less'
+					}))
+					.pipe(gulp.dest('src/blocks/'+block_name));
+					
 		//2. Создаем элемент
 		//bem -e block-name__element-name
 		} else if (process.argv[3] == '-e') {
