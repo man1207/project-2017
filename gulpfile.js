@@ -76,17 +76,14 @@ gulp.task('bem',  function() {
 			var bemDir = 'src/blocks/'+block_name;
 			
 			if (fs.existsSync(bemDir)) {
+				console.log('Run error: block '+block_name+' exists');	
 				return;
-			} 
+			}  
 			
-			return 	gulp.src('src/less/bem.less')
-					.pipe(rename({
-						dirname: '',
-						basename: block_name,
-						extname: '.less'
-					}))
-					.pipe(gulp.dest('src/blocks/'+block_name));
-					
+			fs.mkdirSync(bemDir);
+			fs.writeFileSync(bemDir+'/'+block_name+'.less', '.'+block_name+' {\n\t\n}');
+			
+			return;
 		//2. Создаем элемент
 		//bem -e block-name__element-name
 		} else if (process.argv[3] == '-e') {
@@ -95,11 +92,32 @@ gulp.task('bem',  function() {
 				return;
 			}
 			var block_name = process.argv[4].substring(0, process.argv[4].indexOf('__'));
-			var element_name = process.argv[4].substring(process.argv[4].indexOf('__') + 2, process.argv[4].length - process.argv[4].indexOf('__') + 5);
+			var element_name = process.argv[4].substring(process.argv[4].indexOf('__') + 2);
 			console.log(block_name);
 			console.log(element_name);
-		//2. Создаем модификатор блока
-		//bem -m block-name--modifier
+			
+			var bemDir = 'src/blocks/'+block_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'.less', '.'+block_name+' {\n\t\n}');
+				
+			} else {
+				console.log('Warning: block '+block_name+' exists');	
+			}
+			
+			var bemDir = 'src/blocks/'+block_name+'/__'+element_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'__'+element_name+'.less', '.'+block_name+' {\n\t&__'+element_name+' {\n\n\t}\n}');				
+			} else {
+				console.log('Warning: element '+element_name+' exists');	
+			}
+			
+			return;
+		//3. Создаем модификатор блока
+		//bem -m block-name--modifier-name
 		} else if (process.argv[3] == '-m') {
 			if (process.argv[4].indexOf('--') == -1 || process.argv[4].indexOf('__') > -1) {
 				console.log(' Syntax error : Can\'t create bem-modifier for block.');
@@ -109,6 +127,28 @@ gulp.task('bem',  function() {
 			var modifier_name = process.argv[4].substring(process.argv[4].indexOf('--') + 2);
 			console.log(block_name);
 			console.log(modifier_name);
+			
+			var bemDir = 'src/blocks/'+block_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'.less', '.'+block_name+' {\n\t\n}');
+			} else {
+				console.log('Warning: block '+block_name+' exists');	
+			}
+			
+			var bemDir = 'src/blocks/'+block_name+'/--'+modifier_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'--'+modifier_name+'.less', '.'+block_name+' {\n\t&--'+modifier_name+' {\n\n\t}\n}');
+			} else {
+				console.log('Warning: modifier '+modifier_name+' exists');	
+			}
+			
+			return;
+		//3. Создаем модификатор элемента
+		//bem -M block-name__element-name--modifier-name	
 		} else if (process.argv[3] == '-M') {
 			if (process.argv[4].indexOf('--') == -1 || process.argv[4].indexOf('__') == -1) {
 				console.log(' Syntax error : Can\'t create bem-modifier for element.');
@@ -120,6 +160,35 @@ gulp.task('bem',  function() {
 			console.log(block_name);
 			console.log(element_name);
 			console.log(modifier_name);
+			
+			var bemDir = 'src/blocks/'+block_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'.less', '.'+block_name+' {\n\t\n}');
+			} else {
+				console.log('Warning: block '+block_name+' exists');	
+			}
+			
+			var bemDir = 'src/blocks/'+block_name+'/__'+element_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'__'+element_name+'.less', '.'+block_name+' {\n\t&__'+element_name+' {\n\n\t}\n}');
+			} else {
+				console.log('Warning: element '+element_name+' exists');	
+			}
+			
+			var bemDir = 'src/blocks/'+block_name+'/__'+element_name+'/--'+modifier_name;
+			
+			if ( ! fs.existsSync(bemDir)) {
+				fs.mkdirSync(bemDir);
+				fs.writeFileSync(bemDir+'/'+block_name+'__'+element_name+'--'+modifier_name+'.less', '.'+block_name+' {\n\t&__'+element_name+' {\n\t\t&--'+modifier_name+' {\n\n\t\t}\n\t}\n}');
+			} else {
+				console.log('Warning: modifier '+modifier_name+' exists');	
+			}
+			
+			return;
 		}
 	}
 });
