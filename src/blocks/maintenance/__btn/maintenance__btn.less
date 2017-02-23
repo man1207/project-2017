@@ -1,0 +1,28 @@
+.maintenance {
+
+	&__btn {
+	
+		@media (min-width: @mobile) {
+		
+			width: @mobile - 40;
+			height: 40px;
+			line-height: 40px;
+		}
+		
+		@media (min-width: @laptop) {
+		
+			width: @mobile;
+			height: 60px;
+			line-height: 60px;
+			font-size: 18px;
+		}
+		
+		@media (min-width: @desktop) {
+		
+			width: @mobile + 40;
+			height: 80px;
+			line-height: 80px;
+			font-size: 22px;
+		}
+	}
+}
