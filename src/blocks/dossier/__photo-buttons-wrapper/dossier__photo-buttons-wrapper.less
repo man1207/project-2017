@@ -1,0 +1,27 @@
+.dossier {
+	&__photo-buttons-wrapper {
+		
+		
+		overflow: hidden;
+		//height: 20px;
+		//diplay: block;
+		text-align: center;
+		//border: 1px solid #ccc;
+		margin-bottom: 20px;
+		
+		@media (min-width: @mobile) {
+			width: @mobile - 10;
+		}
+		
+		@media (min-width: @laptop) {
+			//width: @laptop - 20;
+			float: left;
+			margin-right: 20px;
+		}
+		
+		@media (min-width: @desktop) {
+			//float: left;
+			//width: @desktop - @mobile - 120;
+		}
+	}
+}

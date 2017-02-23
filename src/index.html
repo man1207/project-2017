@@ -12,123 +12,53 @@
 			</div>	
 		</header>
 		<div class="empty  empty--margin-30"></div>
-		<table class="user-list">
+		<table class="user-list  ">
 			<tr>
-				<th class="user-list__header">Пользователь</th>
+				<th class="user-list__header">Сотрудник</th>
 				<th class="user-list__header">
-					<div class="btn btn--theme-add user-list__btn"></div>
+					<div class="btn  btn--theme-add  user-list__btn"></div>
+					<div class="btn  btn--theme-add-ad  user-list__btn"></div>
 				</th>
 			</tr>
 			<tr>
-				<td class="user-list__item">boss</td>
+				<td class="user-list__item">Иванов И.И.</td>
 				<td class="user-list__item">
-					<div class="btn btn--theme-edit user-list__btn"></div>
-					<div class="btn btn--theme-remove user-list__btn"></div>
+					<div class="btn  btn--theme-remove  user-list__btn"></div>
 				</td>
 			</tr>
 			<tr>
-				<td class="user-list__item">admin</td>
+				<td class="user-list__item">Петров П.А.</td>
 				<td class="user-list__item">
-					<div class="btn btn--theme-edit user-list__btn"></div>
-					<div class="btn btn--theme-remove user-list__btn"></div>
+					<div class="btn  btn--theme-remove  user-list__btn"></div>
 				</td>
 			</tr>
 			<tr>
-				<td class="user-list__item">director</td>
+				<td class="user-list__item">Нечипоренко Я.В.</td>
 				<td class="user-list__item">
-					<div class="btn btn--theme-edit user-list__btn"></div>
-					<div class="btn btn--theme-remove user-list__btn"></div>
+					<div class="btn  btn--theme-remove  user-list__btn"></div>
 				</td>
 			</tr>
 		</table>
 		<div class="empty  empty--margin-20"></div>
-		<div class="page-tabpanel">
-			<div class="page-tabpanel__tab  page-tabpanel__tab--active">
-				<div class="page-tabpanel__header">Базовые права</div>
-				<label class="checkbox">
-					<input type="checkbox" /><span>Возможность редактировать настройки комплекса, досье, тарифы</span>
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" />
-					<span>Доступ к отчетам мониторинга в базе (на уровне базы SQL)</span>
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" />
-					<span>Запретить SQL-консоль</span></label>
-				<label class="checkbox">
-					<input type="checkbox" /><span>Возможность удалять записи местоположений пользователей из базы</span></label>
-				<label class="checkbox">
-				<input type="checkbox" /><span>Разрешить автоматическую генерацию отчетов пользователю</span></label>
-				<div class="label  page-tabpanel__label  page-tabpanel__label--theme-online">Доступ к функциям БОСС-Онлайн</div>
-				<div class = "page-tabpanel__checkbox-group">
-					<label class="checkbox"><input type="checkbox" /><span>Просмотр информации о машинах</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Обновление клиентского ПО</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Удаление клиентского ПО (uninstall)</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Изменение сервера</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Изменение местоположения машин</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Наблюдение через веб-камеры</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Прослушивание</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Наблюдение/просмотр снимков с экранов</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Просмотр списка процессов/окон</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Пауза/возобновление наблюдения</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Запрос лога клиента</span></label>
-				</div>
-				<div class="label  page-tabpanel__label  page-tabpanel__label--theme-offline">Доступ к функциям БОСС-Оффлайн</div>
-				<div class = "page-tabpanel__checkbox-group">
-					<label class="checkbox"><input type="checkbox" /><span>МАСТЕР ОТЧЕТОВ</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Сводный отчет</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Машинное время</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Пользовательское время</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Программы</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Сайты</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Прослушивание</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Буфер обмена</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Интернет-запросы</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Снимки экранов</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Печать на принтере</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Файловые операции</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Отправка файлов</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Письма (e-mail)</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Чаты/звонки</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Контакты</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>События: пользователь</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>События: компьютер</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>GPS-трекинг</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Оборудование/софт</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>SQL-запрос</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Папка: снимки экранов</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Папка: веб-камеры</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Папка: прослушка</span></label>
-					<label class="checkbox"><input type="checkbox" /><span>Папка: отчеты</span></label>
-				</div>
-				<div class="line"></div>
-				<div class= "btn  btn--color-yellow  page-tabpanel__btn">Установить права</div>
+		<div class="dossier">
+			<div class="dossier__photo-buttons-wrapper">
+				<div class="dossier__photo"></div>
+				<div class="dossier__photo-button  btn  btn--theme-webcam"></div>
+				<div class="dossier__photo-button  btn  btn--theme-folder"></div>
+				<div class="dossier__photo-button  btn  btn--theme-delete"></div>
 			</div>
-			<div class="page-tabpanel__tab">
-				<div class="page-tabpanel__header">Дополнительные запреты</div>
-				<label class="radio">
-				<input type="radio"  name="additional"/>
-				<span>наблюдение за всеми сотрудниками и просмотр всех папок</span></label>
-				<label class="radio">
-				<input type="radio"  name="additional"/>
-				<span>наблюдение/просмотр только выбранных сотрудников и папок</span></label>
-				<label class="radio">
-				<input type="radio"  name="additional"/>
-				<span>наблюдение/просмотр всех кроме выбранных сотрудников и папок</span></label>
-				<label class="radio">
-				<input type="radio"  name="additional"/>
-				<span>выбранных и всех кроме выбранных одновременно</span></label>
-				<div class="label  page-tabpanel__label  page-tabpanel__label--theme-neutral">Выбранные сотрудники</div>
-				<div class="page-tabpanel__list">
-					<textarea></textarea>
-				</div>
-				<div class="label  page-tabpanel__label  page-tabpanel__label--theme-neutral">Выбранные папки/файлы</div>
-				<div class="page-tabpanel__list">
-					<textarea></textarea>
-				</div>
-				<div class="line"></div>
-				<div class= "btn  btn--color-yellow  page-tabpanel__btn">Установить права</div>
+			<div class="control-wrapper  dossier__controls  ">
+				<input value="Иванов И.И." class="dossier__text  control-wrapper__text"/>
+				<input value="Бухгалтерия" class="dossier__text  control-wrapper__text"/>
+				<input value="ivanov89@mail.ru"  class="dossier__text  control-wrapper__text"/>
 			</div>
+			<div class="control-wrapper  dossier__controls  dossier__controls--laptop-width-100">
+				<div class="dossier__select  control-wrapper__select"></div>
+				<div class="dossier__select  control-wrapper__select"></div>
+				<div class="dossier__select  control-wrapper__select"></div>
+			</div>
+			<div class="btn  btn--color-yellow  control-wrapper__btn  control-wrapper__btn--line-one  dossier__btn">Сохранить в базе</div>
 		</div>
+		<div class="empty  empty--margin-20"></div>
 	</body>
 </html>

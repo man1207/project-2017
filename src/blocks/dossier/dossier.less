@@ -1,0 +1,19 @@
+.dossier {
+	
+	overflow: hidden;
+	margin: 0 auto;
+	//border: 1px solid #ccc;
+	
+	@media (min-width: @mobile) {
+		width: @mobile - 10;
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop - 20;
+	}
+	
+	@media (min-width: @desktop) {
+		float: left;
+		width: @desktop - @mobile - 120;
+	}
+}
