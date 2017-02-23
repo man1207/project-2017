@@ -1,0 +1,14 @@
+.control-wrapper {
+	&__btn {
+		&--mobile-auto {
+			@media (min-width: @mobile) {
+				margin: 0 auto;
+				//display: block;
+				float: none;
+			}
+			@media (min-width: @laptop) {
+				float: left;
+			}
+		}
+	}
+}
