@@ -1,0 +1,22 @@
+.control-wrapper {
+	&__btn {
+		
+		height: 48px;
+		
+		@media (min-width: @mobile){
+			width: @mobile - 48px;
+			float: left;
+			//line-height: 20px;
+			//height: 60px;
+		}
+		
+		@media (min-width: @laptop){
+			line-height: 48px;
+			width: 240px;
+		}
+		
+		@media (min-width: @desktop){
+			
+		}
+	}
+}

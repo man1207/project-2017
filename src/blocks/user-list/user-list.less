@@ -1,0 +1,48 @@
+.user-list {
+
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 0 auto;
+	
+	@media (min-width: @mobile) {
+		width: @mobile;
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop - 20;
+	}
+	
+	@media (min-width: @desktop) {
+		width: @mobile;
+		margin: 0;
+		margin-left: 5%; 
+		float: left;
+		margin-right: 30px;
+	}
+	
+	& td,
+	& th {
+		border: 1px solid @color-soft;
+		padding: 10px 10px;
+		text-align: left;
+
+	}
+	
+	& td:last-child,
+	& th:last-child	{
+		text-align: center;
+		
+		@media (min-width: @mobile) {
+			width: 32px + 48px;
+		}
+	
+		@media (min-width: @laptop) {
+			width: 48px + 48px;
+		}
+		
+		@media (min-width: @desktop) {
+			width: 32px + 48px;
+		}
+	}
+	
+}

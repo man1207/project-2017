@@ -1,0 +1,24 @@
+.journal {
+
+	border-collapse: collapse;
+	border: 1px solid @color-soft;
+	margin: 0 auto;
+	
+	@media (min-width: @mobile) {
+		width: @mobile;
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop - 20;
+	}
+	
+	@media (min-width: @desktop) {
+			width: @desktop - 40;
+			margin-left: 20px;
+	}
+	
+	& th,
+	& td {
+		
+	}
+}

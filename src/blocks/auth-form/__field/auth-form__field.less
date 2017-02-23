@@ -1,0 +1,27 @@
+.auth-form {
+
+	&__field {
+		
+		display: block;
+		margin: auto;
+		margin-bottom: 10px;
+		color: @color-text;
+		padding-left: 10px;
+		font-family: @font-sans;
+		border: none;
+		
+		@media (min-width: @mobile) {
+			width: @mobile - 20px;
+			height: 42px;
+			line-height: 42px;
+			font-size: 16px;
+		}
+		
+		@media (min-width: @laptop) {
+			width: 402px;
+			height: 82px;
+			line-height: 82px;
+			font-size: 24px;
+		}
+	}
+}

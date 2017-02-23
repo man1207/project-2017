@@ -1,0 +1,27 @@
+.radio {
+	
+	margin: 0px 5px 15px 10px;
+	display: block;
+	
+	& input {
+	
+		display: none;
+		
+		& + span {
+		
+			background: url("../img/radio-not.png") no-repeat;
+			height: 32px;
+			width: 32px;
+			display: inline;
+			padding: 5px 0px 5px 48px;
+			cursor: pointer;
+			width: auto;
+
+		}	
+		
+		&:checked + span {
+		
+			background: url("../img/radio-checked.png") no-repeat;
+	    }
+	}
+}

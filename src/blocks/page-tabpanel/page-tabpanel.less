@@ -1,0 +1,20 @@
+.page-tabpanel {
+	
+	border: 1px solid @color-soft;
+	//margin-bottom: 20px;
+
+	@media (min-width: @mobile) {
+		display: block;
+		width: @mobile;
+		margin: 0 auto;
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop;
+	}
+	
+	@media (min-width: @desktop) {
+		float: left;
+		min-width: @desktop - @mobile - 100px;
+	}
+}

@@ -1,0 +1,37 @@
+.page-tabpanel {
+
+	&__list {
+	
+		border: 1px solid @color-hard;
+		
+		width: @mobile - 10;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		min-height: 180px;
+		
+		@media (min-width: @mobile) {
+			width: @mobile - 20;		
+		}
+		
+		@media (min-width: @laptop) {
+			width: @laptop - 20;
+		}
+		
+		@media (min-width: @desktop) {
+			width: @laptop - 20;
+			margin: 0px 0px 20px 10px;
+		}
+		
+		& textarea {
+			width:100%;
+			outline: none;
+			border: none;
+			resize: none;
+			overflow: auto;
+			min-height: 180px;
+		}
+		
+	}
+	
+	
+}

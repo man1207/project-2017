@@ -1,0 +1,19 @@
+.journal {
+	&__data {
+		&--type-source {
+			@media (min-width: @mobile) {
+				display: block;
+				font-size: 14px;
+			}
+			
+			@media (min-width: @laptop) {
+				display: inline;
+				padding-left: 15px;
+			}
+			
+			@media (min-width: @desktop) {
+				display: table-cell;
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.journal {
+	&__data {
+		&--type-time {
+			@media (min-width: @mobile) {
+				display: inline;
+				padding-left: 15px;
+				color: @color-soft;
+				font-size: 14px;
+				
+			}
+			
+			@media (min-width: @desktop) {
+				display: table-cell;
+				color: @color-text;
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.control-wrapper {
+	
+	overflow: hidden;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	
+	@media (min-width: @mobile) {
+		width: @mobile;
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop - 20;
+	}
+	
+	@media (min-width: @desktop) {
+		width: @desktop - 40;
+		margin-left: 20px;
+	}
+}

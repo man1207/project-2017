@@ -1,0 +1,42 @@
+.console {
+	
+	border: 1px solid @color-hard;
+		
+	width: @mobile - 10;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	//height: 320px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 140px;
+	padding: 5px;
+	background: #000;
+	
+	@media (min-width: @mobile) {
+		width: @mobile - 10;		
+	}
+	
+	@media (min-width: @laptop) {
+		width: @laptop - 20;
+	}
+	
+	@media (min-width: @desktop) {
+		width: @desktop - 40;
+	}
+	
+	& textarea {
+		outline: none;
+		border: none;
+		resize: none;
+		overflow: auto;
+		height: 100%;
+		width: 100%;
+		background: #000;
+		color: #fff;
+		padding: 0px;
+		line-height: 24px;
+	}
+	
+}
