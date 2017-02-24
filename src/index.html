@@ -12,53 +12,44 @@
 			</div>	
 		</header>
 		<div class="empty  empty--margin-30"></div>
-		<table class="user-list  ">
-			<tr>
-				<th class="user-list__header">Сотрудник</th>
-				<th class="user-list__header">
-					<div class="btn  btn--theme-add  user-list__btn"></div>
-					<div class="btn  btn--theme-add-ad  user-list__btn"></div>
-				</th>
-			</tr>
-			<tr>
-				<td class="user-list__item">Иванов И.И.</td>
-				<td class="user-list__item">
-					<div class="btn  btn--theme-remove  user-list__btn"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="user-list__item">Петров П.А.</td>
-				<td class="user-list__item">
-					<div class="btn  btn--theme-remove  user-list__btn"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="user-list__item">Нечипоренко Я.В.</td>
-				<td class="user-list__item">
-					<div class="btn  btn--theme-remove  user-list__btn"></div>
-				</td>
-			</tr>
-		</table>
-		<div class="empty  empty--margin-20"></div>
-		<div class="dossier">
-			<div class="dossier__photo-buttons-wrapper">
-				<div class="dossier__photo"></div>
-				<div class="dossier__photo-button  btn  btn--theme-webcam"></div>
-				<div class="dossier__photo-button  btn  btn--theme-folder"></div>
-				<div class="dossier__photo-button  btn  btn--theme-delete"></div>
-			</div>
-			<div class="control-wrapper  dossier__controls  ">
-				<input value="Иванов И.И." class="dossier__text  control-wrapper__text"/>
-				<input value="Бухгалтерия" class="dossier__text  control-wrapper__text"/>
-				<input value="ivanov89@mail.ru"  class="dossier__text  control-wrapper__text"/>
-			</div>
-			<div class="control-wrapper  dossier__controls  dossier__controls--laptop-width-100">
-				<div class="dossier__select  control-wrapper__select"></div>
-				<div class="dossier__select  control-wrapper__select"></div>
-				<div class="dossier__select  control-wrapper__select"></div>
-			</div>
-			<div class="btn  btn--color-yellow  control-wrapper__btn  control-wrapper__btn--line-one  dossier__btn">Сохранить в базе</div>
+		<div class="settings-menu  settings-menu--active  settings-menu--theme-main">
+			<div class="settings-menu__item  settings-menu__item--theme-server">Для сервера</div>
+			<div class="settings-menu__item  settings-menu__item--theme-pc">Для компьютеров</div>
+			<div class="settings-menu__item  settings-menu__item--theme-user">Для пользователей</div>
+			<div class="settings-menu__item  settings-menu__item--theme-group">Группы</div>
 		</div>
-		<div class="empty  empty--margin-20"></div>
+		<div class="settings-menu  settings-menu--theme-server  settings-menu--active">
+			<div class="settings-menu__header">Общие настройки</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Общие настройки</div>
+			<div class="settings-menu__header">Мониторинг</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Снимки экранов</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Веб-камеры</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Автопрослушка</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Теневое копирование</div>
+			<div class="settings-menu__header  ">Генератор отчетов</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Параметры</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Типы отчетов</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Сохранение в папку</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Отправка по FTP</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Отправка на e-mail</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Отправка на веб-сайт</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Угрозы</div>
+			<div class="settings-menu__header  ">Генератор уведомлений</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Отправка на e-mail</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Отправка по SMS</div>
+		</div>
+		<div class="settings-menu  settings-menu--theme-pc">
+			<div class="settings-menu__header">Общие настройки</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Общие настройки</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Выборочное наблюдение</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Локальное хранилище</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Запреты</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">События</div>
+			<div class="settings-menu__header">Мониторинг</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Машинное время</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Веб-камеры</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Автопрослушка</div>
+			<div class="settings-menu__item  settings-menu__item--theme-menu">Контроль оборудования</div>			
+		</div>
 	</body>
 </html>
