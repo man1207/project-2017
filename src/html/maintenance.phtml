@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<div class="maintenance">
+			<div class="maintenance__counter">100%</div>
+			<div class="btn  btn--color-yellow  maintenance__btn">Переиндексировать базу</div>
+		</div>	
+		<div class="empty  empty--margin-20"></div>
+		<?php echo $footer;?>
+		<script>
+			var xhr = new XMLHttpRequest();
+			document.getElementsByClassName('maintenance__btn')[0].addEventListener("click", function(e){
+				
+				if (e.target.className.indexOf('btn--disabled') > -1) {
+					e.preventDefault();
+					return false;
+				}
+				
+				xhr.open('POST', '/maintenance', true);
+				xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+				var json = JSON.stringify({
+				  action: 'start'
+				});
+				var count = 0;
+				var timerId = setInterval(function() {
+				  count++;
+				  document.getElementsByClassName('maintenance__counter')[0].innerHTML = count+'%';
+				  if (count == 99) {
+					  clearInterval(timerId);
+					 document.getElementsByClassName('maintenance__counter')[0].className += ' maintenance__btn--blink';
+				  }
+				}, 50);
+				
+				xhr.onreadystatechange = function() {
+				  if (this.readyState != 4) 
+					  return;
+				  var target = document.getElementsByClassName('maintenance__btn')[0];
+				  target.className = target.className.replace('btn--disabled', '');
+				  document.getElementsByClassName('maintenance__counter')[0].className = document.getElementsByClassName('maintenance__counter')[0].className.replace('maintenance__btn--blink', '');
+				  e.target.className +=' btn--color-yellow';
+				  clearInterval(timerId);
+				  document.getElementsByClassName('maintenance__counter')[0].innerHTML = '100%';
+				  //alert(this.responseText);				  
+				}
+
+				xhr.send(json);
+				//Блокируем кнопочку
+				e.target.className +=' btn--disabled';
+				e.target.className = e.target.className.replace('btn--color-yellow', '');
+				//Запускаем таймер
+				
+			});
+		</script>
+	</body>
+</html>

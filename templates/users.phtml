@@ -5,12 +5,7 @@
 		<link rel="stylesheet" href="css/style.css"/>
 	</head>
 	<body class="page-body">	
-		<header class="page-header">
-			<div class="page-header__logo-wrapper">
-				<div class="page-header__logo"></div>
-				<div class="page-header__title">Глобальные настройки</div>
-			</div>	
-		</header>
+		<?php echo $header;?>
 		<div class="empty  empty--margin-30"></div>
 		<table class="user-list">
 			<tr>
@@ -19,26 +14,20 @@
 					<div class="btn btn--theme-add user-list__btn"></div>
 				</th>
 			</tr>
+			<?php for($i = 0; $i < count($list); $i++ ) { ?>
 			<tr>
-				<td class="user-list__item">boss</td>
+				<td class="user-list__item"><?php echo $list[$i]['user_name']?></td>
 				<td class="user-list__item">
 					<div class="btn btn--theme-edit user-list__btn"></div>
 					<div class="btn btn--theme-remove user-list__btn"></div>
 				</td>
 			</tr>
+			<?php } ?>
 			<tr>
-				<td class="user-list__item">admin</td>
-				<td class="user-list__item">
-					<div class="btn btn--theme-edit user-list__btn"></div>
-					<div class="btn btn--theme-remove user-list__btn"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="user-list__item">director</td>
-				<td class="user-list__item">
-					<div class="btn btn--theme-edit user-list__btn"></div>
-					<div class="btn btn--theme-remove user-list__btn"></div>
-				</td>
+				<th class="user-list__header">Всего: <?php echo count($list);?> записей</th>
+				<th class="user-list__header">
+
+				</th>
 			</tr>
 		</table>
 		<div class="empty  empty--margin-20"></div>
@@ -129,6 +118,8 @@
 				<div class="line"></div>
 				<div class= "btn  btn--color-yellow  page-tabpanel__btn">Установить права</div>
 			</div>
+			
 		</div>
+		<?php echo $footer;?>
 	</body>
 </html>

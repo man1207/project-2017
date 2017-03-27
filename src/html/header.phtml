@@ -1,0 +1,11 @@
+<header class="page-header">
+	<div class="page-header__logo-wrapper" onclick="location.href='/'">
+		<div class="page-header__logo"></div>
+		<div class="page-header__title"><?php echo isset($title) ? $title : 'Глобальные настройки';?></div>
+	</div>	
+	<?php if ($auth) { ?>
+		<form class="logout-form" method="POST" action="/logout">
+			<div class="page-header__logout btn btn--color-yellow" onclick="document.getElementsByClassName('logout-form')[0].submit();">Выйти</div>
+		</form>
+	<?php } ?>
+</header>

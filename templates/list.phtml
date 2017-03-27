@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<form method="POST" class="list-form" action="/list">
+			<div><?php if(isset($info)) echo $info;?></div>
+			<table class="user-list  user-list--theme-client">
+				
+				<tr>
+					<th class="user-list__header">Пользователь</th>
+					<th class="user-list__header">
+
+					</th>
+				</tr>
+				<?php for($i = 0; $i < count($list); $i++ ) {?>
+				<tr>
+					<td class="user-list__item"><?php echo $list[$i]['user_name']?></td>
+					<td class="user-list__item">
+						<div class="btn btn--theme-remove user-list__btn"></div>
+					</td>
+				</tr>
+				<?php }?>
+				<tr>
+					<th class="user-list__header">Всего: <?php echo count($list);?> записей</th>
+					<th class="user-list__header">
+
+					</th>
+				</tr>
+			</table>
+		</form>
+		<div class="empty  empty--margin-20"></div>
+		<?php echo $footer;?>
+		<script>
+			var buttons = document.getElementsByClassName('user-list__btn');
+			for (var i =0; i < buttons.length; i++) {
+				buttons[i].addEventListener('click', function(e) {
+					var input = document.createElement("input");  
+					input.name = 'name';
+					input.type = 'hidden';
+					//alert(e.target.parentNode.previousElementSibling.innerHTML);
+					input.value = e.target.parentNode.previousElementSibling.innerHTML;
+					document.getElementsByClassName('list-form')[0].appendChild(input);
+					document.getElementsByClassName('list-form')[0].submit();
+				});
+			}
+		</script>
+	</body>
+</html>

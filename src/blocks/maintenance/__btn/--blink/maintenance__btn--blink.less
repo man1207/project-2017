@@ -1,0 +1,11 @@
+@-webkit-keyframes pulsate { 0% { color: rgba(83, 83, 86, 1); } 50% { color: rgba(83, 83, 86, 0.2); } 100% { color: rgba(83, 83, 86, 1); } } 
+@keyframes pulsate { 0% { color: rgba(83, 83, 86, 1); } 50% { color: rgba(83, 83, 86, 0.2); } 100% { color: rgba(83, 83, 86, 1); } }
+
+.maintenance {
+	&__btn {
+		&--blink {
+			-webkit-animation: pulsate 3s linear infinite; 
+			animation: pulsate 3s linear infinite;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="../css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<div class="page-menu">
+			<div class="page-menu__item  page-menu__item--type-users" onclick="location.href='/users'">
+				<div class="page-menu__title">Пользователи базы</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-settings" onclick="location.href='/settings'">
+				<div class="page-menu__title">Настройки комплекса</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-dossier" onclick="location.href='/dossier'">
+				<div class="page-menu__title">Досье сотрудников</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-console" onclick="location.href='/sql'">
+				<div class="page-menu__title">SQL-консоль</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-userslist" onclick="location.href='/list'">
+				<div class="page-menu__title">Списки пользователей</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-tariff" onclick="location.href='/tariff'">
+				<div class="page-menu__title">Тарифы</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-maintenance" onclick="location.href='/maintenance'">
+				<div class="page-menu__title">Обслуживание базы</div>
+			</div>
+			<div class="page-menu__item  page-menu__item--type-journal"  onclick="location.href='/journal'">
+				<div class="page-menu__title">Журнал</div>
+			</div>
+		</div>
+		<?php echo $footer;?>
+	</body>
+</html>
