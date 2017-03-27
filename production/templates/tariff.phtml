@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<div class="control-wrapper">
+			<div class="control-wrapper__select">
+				<select class="printer-list">
+					<?php for ($i =0; $i < count($list); $i++) { ?>
+						<option value="<?php echo $list[$i]; ?>"><?php echo $list[$i]; ?></option>
+					<?php } ?>
+				</select>
+			</div>			
+			<div class="btn  btn--color-yellow  control-wrapper__btn  control-wrapper__btn--line-one  control-wrapper__btn--mobile-auto" onclick="location.href='/tariff'">Обновить</div>
+		</div>
+		<div class="info"></div>
+		<table class="user-list  user-list--theme-client  user-list--desktop-left">
+			<tr>
+				<th class="user-list__header">Печать</th>
+				<th class="user-list__header">Стоимость</th>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы A4 (ч/б)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[0]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы A4 (цвет)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[1]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы A3 (ч/б)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[2]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы A3 (цвет)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[3]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы другого формата (ч/б)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[4]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+			<tr>
+				<td class="user-list__item">Печать страницы другого формата (цвет)</td>
+				<td class="user-list__item">
+					<input type="text" value="<?php echo $tariff[5]; ?>" class="user-list__text  control-wrapper__text" />
+				</td>
+			</tr>
+		</table>
+		<div class="empty  empty--margin-20"></div>
+		<div class="control-wrapper">		
+			<div class="btn  btn--color-yellow  control-wrapper__btn  control-wrapper__btn--line-one  control-wrapper__btn--mobile-auto btn--save">Сохранить в базе</div>
+		</div>
+		<div class="empty  empty--margin-20"></div>
+		<?php echo $footer;?>
+		<script>
+			var xhr = new XMLHttpRequest();
+			document.getElementsByClassName('printer-list')[0].addEventListener("change", function(e) {
+				document.getElementsByClassName('info')[0].innerHTML = '';
+				//xhr
+				xhr.open('POST', '/tariff', true);
+				xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+				var json = JSON.stringify({
+					'printer': e.target.value,
+					'action': 'get'
+				});
+				xhr.onreadystatechange = function() {
+				  if (this.readyState != 4) 
+					  return;				
+				  //alert(this.responseText);
+				  var data = JSON.parse(this.responseText);
+				 
+				  var items = document.getElementsByTagName('input');
+				  for (var i=0; i < items.length; i++) {
+					  items[i].value = data[i];
+				  }			  				  
+				}
+				xhr.send(json);				
+			});
+			document.getElementsByClassName('btn--save')[0].addEventListener("click", function(e) {
+				//xhr
+				xhr.open('POST', '/tariff', true);
+				xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+				var items = [];
+				var itemElements = document.getElementsByTagName('input');
+				for (var i=0; i < itemElements.length; i++) {
+					  items.push(itemElements[i].value);
+				  }	
+				var json = JSON.stringify({
+					'items': items,
+					'printer': document.getElementsByClassName('printer-list')[0].value,
+					'action': 'save'
+				});
+				xhr.onreadystatechange = function() {
+				  if (this.readyState != 4) 
+					  return;	
+				  var data = JSON.parse(this.responseText);
+				  document.getElementsByClassName('info')[0].innerHTML = data[0];			  				  
+				}
+				xhr.send(json);	
+			});
+			
+		</script>
+	</body>
+</html>

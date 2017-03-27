@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<div class="console">
+			<textarea spellcheck="false" class="console__area">$> </textarea>
+		</div>
+		<?php echo $footer;?>
+		<script>
+			var welcome = '$> ';
+			
+			function History() {
+				this.history = [];
+				this.length = 100;
+				this.cursor = 0;
+				this.state = 'reset';
+				this.save = function(value) {
+					//Ищем в истории
+					for(var i =0; i < this.history.length; i++) {
+						if (this.history[i] == value) {
+							//Удалить старое значение и вставить новое
+							this.history.splice(i,1);
+							this.history.push(value);
+							this.searchReset();
+							return true;
+						}
+					}
+					//Если не нашли, то проверяем длину истории
+					if (this.history.length >= this.length) {
+						this.history.splice(0,1);
+						this.history.push(value);
+					} else {
+						this.history.push(value);
+					}
+					this.searchReset();
+				}
+				this.searchUp = function() {
+					if (this.history.length == 0) 
+						return '';
+					if (this.state == 'reset') {
+						this.state = 'search';
+						return this.history[this.cursor];
+					}
+					if (this.cursor > 0 && this.state == 'search') {					
+						this.cursor -=1;
+						return this.history[this.cursor];
+					}
+					if (this.cursor == 0 && this.state == 'search') {
+						return this.history[0];
+					} 
+				}
+				this.searchDown = function() {
+					
+					if (this.history.length == 0) 
+						return '';
+					
+					if (this.cursor < this.history.length - 1) {
+						this.cursor +=1;
+						return this.history[this.cursor];
+					}
+					if (this.cursor == this.history.length - 1 ) {
+						this.state = 'search';
+						return this.history[this.history.length - 1];
+					} 
+				}
+				this.searchReset = function() {
+					this.cursor = this.history.length - 1;
+					this.state='reset';
+				}
+			}
+		
+			var xhr = new XMLHttpRequest();
+			var oHistory = new History();
+			
+			document.getElementsByClassName('console__area')[0].addEventListener("keydown", function(e){
+				var key = e.which || e.keyCode;
+				if (key == 8 || key == 46) {
+					oHistory.searchReset();
+				}
+				if (key == 8 || key == 39 || key == 46) {
+					if (e.target.value.lastIndexOf(welcome) == e.target.value.length - welcome.length) {
+						e.preventDefault();
+						return false;
+					}
+				} else if (key == 37) {
+					if (e.target.value.lastIndexOf(welcome) == e.target.value.length - welcome.length || e.target.selectionStart == welcome.length + e.target.value.lastIndexOf(welcome)) {
+						e.preventDefault();
+						return false;
+					}
+				} else if (key == 38) { //Up
+
+					var text = oHistory.searchUp();
+					text = e.target.value.substring(0, e.target.value.lastIndexOf(welcome) + welcome.length)+text;
+					e.target.value = text;
+					e.target.scrollTop = e.target.scrollHeight;					
+					e.preventDefault();
+					return false;
+				} else if (key == 40) {
+					var text = oHistory.searchDown();
+					text = e.target.value.substring(0, e.target.value.lastIndexOf(welcome) + welcome.length)+text;
+					e.target.value = text;
+					e.target.scrollTop = e.target.scrollHeight;					
+					e.preventDefault();
+					return false;
+				}  
+				else if (key == 13) {
+					var text = e.target.value.trim() + ' ';
+					text = text.substring(text.lastIndexOf(welcome) + welcome.length).trim();
+					if (text.length) {
+						if (text == 'clear') {
+							e.target.value = welcome;
+							e.preventDefault();
+							return false;
+						} else {
+							//ajax request
+							oHistory.save(text);
+							xhr.open('POST', '/sql', true);
+							xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+							var json = JSON.stringify({
+							  request: text
+							});
+							xhr.onreadystatechange = function() {
+							  if (this.readyState != 4) 
+								  return;
+							  var target = document.getElementsByClassName('console__area')[0];
+							  //var newline = String.fromCharCode(65, 66, 67);
+							  var text = this.responseText.split('\\\\r').join('\n');  
+							  text = text.split('\\\\').join('\\');
+							  text = text.replace( /\\u([0-9a-f]{4})/g, 
+								  function (whole, group1) {
+									  return String.fromCharCode(parseInt(group1, 16));
+								  });
+							  text = text.split('"').join('');
+							  //alert(target.innerHTML);
+							  target.value +='\n'+text+'\n'+welcome;	
+							  e.target.scrollTop = e.target.scrollHeight;	
+							  
+							}
+							xhr.send(json);
+							e.preventDefault();
+							return false;
+						}
+
+					}
+					e.target.value += ('\n'+welcome); 
+					e.target.scrollTop = e.target.scrollHeight;					
+					e.preventDefault();
+					return false;
+				}
+				oHistory.searchReset();
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="../css/style.css"/>
+	</head>
+	<body class="page-body">	
+		<?php echo $header;?>
+		<div class="empty  empty--margin-30"></div>
+		<form class="control-wrapper  remove-form" method="POST" action="/journal">
+			<input name="days" type="text" class="control-wrapper__text"/>
+			<div class="btn  btn--color-yellow  control-wrapper__btn" onclick="document.getElementsByClassName('remove-form')[0].submit();">Удалить старшие записи (дней)</div>
+
+		</form>
+		<div><?php if(isset($info)) echo $info;?></div>
+		<table class="journal">
+			
+			<tr>
+				<th class="journal__header" colspan = "4">
+					Запись
+				</th>
+			</tr>
+			<?php for($i=0; $i < count($journal); $i++) { 
+				switch($journal[$i]['a_id']) {
+					case 0: 
+						$descr = 'Вход в программу глобальных настроек';
+						$class = 'journal__row--theme-neutral';
+					break;
+					case 1: 
+						$descr= 'Вход в БОСС-Оффлайн';
+						$class = 'journal__row--theme-offline';
+					break; 
+					case 2:
+						$descr= 'Вход в БОСС-Онлайн';
+						$class = 'journal__row--theme-online';
+					break; 
+					default: 
+						$descr= 'Неизвестное действие';	
+						$class = '';
+				}
+				?>
+				<tr class="journal__row <?php echo $class;?>">
+					<td class="journal__data  journal__data--type-action">
+						<?php echo $descr;?>
+					</td>
+					<td class="journal__data  journal__data--type-user">
+						<?php echo $journal[$i]['user_name'];?>
+					</td>
+					<td class="journal__data  journal__data--type-time">
+						<?php echo $journal[$i]['a_time'];?>
+					</td>
+					<td class="journal__data  journal__data--type-source">
+						<?php echo $journal[$i]['src_info'];?>
+					</td>
+				</tr>
+			<?php }?>
+			<tr>
+				<th class="journal__header" colspan = "4">
+					Всего: <?php echo count($journal);?> записей
+				</th>
+			</tr>
+		</table>
+		<div class="empty  empty--margin-20"></div>
+		<?php echo $footer;?>
+		<script>
+			
+		</script>
+	</body>
+</html>
