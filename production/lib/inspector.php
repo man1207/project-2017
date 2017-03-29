@@ -69,9 +69,10 @@ class Inspector {
 		$command = "DELETE FROM tjournal 
 		WHERE DATEDIFF(NOW(), DATE_ADD('1899-12-31 00:00:00', INTERVAL a_time*24*3600 SECOND)) > " . $days;
 		$result = Database::query($command);	
-		if (!$result) 
-			return 'Произошла ошибка';
-		return 'Удалено ' . Database::affected_rows() . ' строк';
+		if ($result) 
+			return 'Удалено ' . Database::affected_rows() . ' строк';
+		else
+			return false;
 	}
 	
 	# Работа с консолью
